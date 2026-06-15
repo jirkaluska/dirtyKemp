@@ -38,12 +38,12 @@ a:hover { text-decoration: underline; }
 
 /* ===== Header ===== */
 .site-header {
-  background: #000;
+  background: #fff;
   border-bottom: 3px solid var(--yellow);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 .header-inner {
   max-width: 1040px;
@@ -57,14 +57,12 @@ a:hover { text-decoration: underline; }
 .logo {
   height: 44px;
   display: block;
-  /* Force logo white on dark background */
-  filter: brightness(0) invert(1);
 }
 .site-title {
   font-family: var(--font-cond);
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--yellow);
+  color: #111;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding-left: 1rem;
@@ -75,7 +73,7 @@ a:hover { text-decoration: underline; }
 /* ===== Hero ===== */
 .hero {
   background: var(--yellow);
-  border-bottom: 3px solid var(--border);
+  border-bottom: 3px solid rgba(0,0,0,0.12);
   padding: 2.5rem 1.5rem 2rem;
   position: relative;
   overflow: hidden;
@@ -94,27 +92,28 @@ a:hover { text-decoration: underline; }
   );
   pointer-events: none;
 }
-/* goat watermark — mix-blend-mode:multiply makes white pixels vanish on yellow bg */
-.hero::after {
-  content: '';
-  position: absolute;
-  right: 2rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 220px;
-  height: 220px;
-  background: url('../assets/brand/contact.png') center/contain no-repeat;
-  mix-blend-mode: multiply;
-  opacity: 0.18;
-  pointer-events: none;
-}
 .hero-inner {
   max-width: 1040px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
 }
-.hero-text { max-width: 600px; }
+.hero-text { flex: 1; }
+/* goat watermark — mix-blend-mode:multiply makes white pixels vanish on yellow bg */
+.hero-mascot-img {
+  width: 180px;
+  height: 180px;
+  flex-shrink: 0;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  opacity: 0.25;
+  pointer-events: none;
+  user-select: none;
+}
 .hero-eyebrow {
   font-family: var(--font-cond);
   font-size: 0.82rem;
@@ -454,10 +453,9 @@ a:hover { text-decoration: underline; }
 
 /* ===== Footer ===== */
 .site-footer {
-  background: #000;
-  border-top: 1px solid var(--border);
-  padding: 1.5rem;
-  text-align: center;
+  background: #fff;
+  border-top: 3px solid var(--yellow);
+  padding: 1.25rem 1.5rem;
 }
 .footer-inner {
   max-width: 1040px;
@@ -469,9 +467,8 @@ a:hover { text-decoration: underline; }
   gap: 0.75rem 2rem;
 }
 .footer-logo {
-  height: 28px;
-  filter: brightness(0) invert(1);
-  opacity: 0.35;
+  height: 26px;
+  opacity: 0.5;
 }
 .footer-text {
   font-size: 0.78rem;
@@ -479,7 +476,7 @@ a:hover { text-decoration: underline; }
   letter-spacing: 0.05em;
 }
 .footer-text a { color: var(--text-muted); }
-.footer-text a:hover { color: var(--yellow); text-decoration: none; }
+.footer-text a:hover { color: #111; text-decoration: none; }
 
 /* ===== Responsive ===== */
 @media (max-width: 680px) {
