@@ -24,7 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    if (countEl) countEl.textContent = `${camps.length} termín${camps.length > 1 ? 'ů' : ''}`;
+    const n = camps.length;
+    const label = n === 1 ? 'termín' : n <= 4 ? 'termíny' : 'termínů';
+    if (countEl) countEl.textContent = `${n} ${label}`;
 
     list.innerHTML = camps.map((camp, idx) => {
       const status = DB.campStatusLabel(camp);
