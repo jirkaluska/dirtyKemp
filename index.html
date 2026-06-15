@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dirty Goats – BMX Kempy</title>
-  <link rel="icon" href="assets/logo.png">
+  <link rel="icon" href="assets/brand/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -12,46 +15,66 @@
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="logo-link">
-        <img src="assets/logo.png" alt="Dirty Goats" class="logo">
+        <img src="assets/brand/logo.png" alt="Dirty Goats" class="logo">
       </a>
-      <h1 class="site-title">BMX Kempy</h1>
+      <span class="site-title">BMX Kempy</span>
     </div>
   </header>
 
-  <main class="main-content">
-    <section class="camps-section">
-      <h2 class="section-title">Nadcházející kempy</h2>
-      <div id="camps-list" class="camps-list">
-        <div class="loading">Načítám kempy…</div>
+  <div class="hero">
+    <div class="hero-inner">
+      <img src="assets/brand/contact.png" alt="" class="hero-mascot" aria-hidden="true">
+      <div class="hero-text">
+        <div class="hero-eyebrow">Dirty Goats CZ &nbsp;·&nbsp; Tréninkové kempy</div>
+        <h1 class="hero-title">BMX Race<br><span>Kempy</span></h1>
+        <p class="hero-desc">Profesionální tréninkové kempy pro BMX závodníky všech věkových kategorií. Vyber si termín a přihlas se!</p>
       </div>
-    </section>
+    </div>
+  </div>
+
+  <main class="main-content">
+    <div class="section-header">
+      <h2 class="section-title">Nadcházející kempy</h2>
+      <span class="section-count" id="camps-count"></span>
+    </div>
+    <div id="camps-list" class="camps-list">
+      <div class="loading">Načítám kempy…</div>
+    </div>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; Dirty Goats CZ &nbsp;|&nbsp; <a href="admin/index.html">Administrace</a></p>
+    <div class="footer-inner">
+      <img src="assets/brand/logo.png" alt="Dirty Goats" class="footer-logo">
+      <p class="footer-text">
+        &copy; Dirty Goats CZ &nbsp;·&nbsp;
+        <a href="https://www.dirtygoats.cz" target="_blank" rel="noopener">dirtygoats.cz</a>
+        &nbsp;·&nbsp;
+        <a href="admin/index.html">Administrace</a>
+      </p>
+    </div>
   </footer>
 
   <!-- Registration modal -->
   <div id="reg-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-box">
       <button class="modal-close" id="modal-close-btn" aria-label="Zavřít">&times;</button>
-      <h2 id="modal-title" class="modal-heading">Přihlášení na kemp</h2>
+      <h2 id="modal-title" class="modal-heading">Přihlásit se</h2>
       <p id="modal-camp-name" class="modal-subheading"></p>
       <form id="reg-form" novalidate>
         <div class="form-group">
           <label for="rider-name">Jméno a příjmení jezdce <span class="req">*</span></label>
-          <input type="text" id="rider-name" name="riderName" autocomplete="name" required>
+          <input type="text" id="rider-name" name="riderName" autocomplete="name" placeholder="Jan Novák" required>
         </div>
         <div class="form-group">
           <label for="contact-name">Kontaktní osoba <span class="req">*</span></label>
-          <input type="text" id="contact-name" name="contactName" autocomplete="off" required>
+          <input type="text" id="contact-name" name="contactName" autocomplete="off" placeholder="Rodič / zákonný zástupce" required>
         </div>
         <div class="form-group">
           <label for="contact-phone">Telefon kontaktní osoby <span class="req">*</span></label>
-          <input type="tel" id="contact-phone" name="contactPhone" autocomplete="tel" required>
+          <input type="tel" id="contact-phone" name="contactPhone" autocomplete="tel" placeholder="+420 777 123 456" required>
         </div>
         <div id="form-error" class="form-error hidden"></div>
-        <button type="submit" class="btn btn-primary btn-full">Přihlásit se</button>
+        <button type="submit" class="btn btn-primary btn-full">Odeslat přihlášku</button>
       </form>
     </div>
   </div>

@@ -266,6 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     container.innerHTML = `
       <div class="print-header">
+        <img src="../assets/brand/logo.png" alt="Dirty Goats" class="print-logo">
         <h1>${filteredCamp ? escHtml(filteredCamp.name) : 'Dirty Goats – BMX Kempy'}</h1>
         <p>${filteredCamp ? `${formatDate(filteredCamp.dateFrom)} – ${formatDate(filteredCamp.dateTo)} | ${escHtml(filteredCamp.place)}` : 'Všechny kempy'} &nbsp;|&nbsp; Přihlášených jezdců: ${riders.length}</p>
       </div>

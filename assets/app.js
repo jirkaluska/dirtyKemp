@@ -16,33 +16,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderCamps() {
     const camps = DB.getCamps();
+    const countEl = document.getElementById('camps-count');
+
     if (camps.length === 0) {
       list.innerHTML = '<div class="empty-state">Momentálně žádné kempy nejsou vypsány.</div>';
+      if (countEl) countEl.textContent = '';
       return;
     }
 
-    list.innerHTML = camps.map(camp => {
+    if (countEl) countEl.textContent = `${camps.length} termín${camps.length > 1 ? 'ů' : ''}`;
+
+    list.innerHTML = camps.map((camp, idx) => {
       const status = DB.campStatusLabel(camp);
       const open = DB.isCampOpen(camp);
       const registered = DB.getRidersForCamp(camp.id).length;
       const spotsHtml = camp.capacity > 0
-        ? `<span class="camp-spots">${registered} / ${camp.capacity} míst obsazeno</span>`
+        ? `<span class="camp-meta-item">
+             <svg class="camp-meta-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 5a5 5 0 0 0-10 0h10z"/></svg>
+             ${registered} / ${camp.capacity} míst
+           </span>`
         : '';
 
       return `
-        <div class="camp-card" data-id="${camp.id}">
+        <div class="camp-card" data-id="${escHtml(camp.id)}">
+          <div class="camp-number">${String(idx + 1).padStart(2, '0')}</div>
           <div class="camp-info">
             <div class="camp-name">${escHtml(camp.name)}</div>
             <div class="camp-meta">
-              <span class="camp-place">${escHtml(camp.place)}</span>
-              <span class="camp-dates">${formatDate(camp.dateFrom)} – ${formatDate(camp.dateTo)}</span>
+              <span class="camp-meta-item">
+                <svg class="camp-meta-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a5 5 0 0 1 5 5c0 3.5-5 9-5 9S3 9.5 3 6a5 5 0 0 1 5-5zm0 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+                ${escHtml(camp.place)}
+              </span>
+              <span class="camp-meta-item">
+                <svg class="camp-meta-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 4v10h12V4H2z"/></svg>
+                ${formatDate(camp.dateFrom)} – ${formatDate(camp.dateTo)}
+              </span>
               ${spotsHtml}
             </div>
           </div>
-          <span class="camp-status-badge ${status.css}">${status.text}</span>
-          ${open
-            ? `<button class="btn btn-primary reg-btn" data-id="${camp.id}">Přihlásit se</button>`
-            : `<button class="btn btn-disabled" disabled>Přihlášení uzavřeno</button>`}
+          <div class="camp-card-right">
+            <span class="camp-status-badge ${status.css}">${status.text}</span>
+            ${open
+              ? `<button class="btn btn-primary reg-btn" data-id="${escHtml(camp.id)}">Přihlásit se</button>`
+              : `<button class="btn btn-disabled" disabled>Uzavřeno</button>`}
+          </div>
         </div>`;
     }).join('');
 

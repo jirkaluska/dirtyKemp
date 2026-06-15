@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Administrace – Dirty Goats BMX Kempy</title>
-  <link rel="icon" href="../assets/logo.png">
+  <link rel="icon" href="../assets/brand/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
   <link rel="stylesheet" href="admin.css">
 </head>
@@ -13,9 +16,9 @@
   <header class="site-header">
     <div class="header-inner">
       <a href="../index.html" class="logo-link">
-        <img src="../assets/logo.png" alt="Dirty Goats" class="logo">
+        <img src="../assets/brand/logo.png" alt="Dirty Goats" class="logo">
       </a>
-      <h1 class="site-title">Administrace</h1>
+      <span class="site-title">Administrace</span>
       <button id="logout-btn" class="btn btn-outline admin-logout hidden">Odhlásit</button>
     </div>
   </header>
@@ -23,14 +26,17 @@
   <!-- Login screen -->
   <div id="login-screen" class="auth-screen">
     <div class="auth-box">
+      <div class="auth-logo">
+        <img src="../assets/brand/logo.png" alt="Dirty Goats">
+      </div>
       <h2 class="auth-title">Přihlášení do administrace</h2>
       <form id="login-form" novalidate>
         <div class="form-group">
           <label for="admin-pass">Heslo <span class="req">*</span></label>
-          <input type="password" id="admin-pass" autocomplete="current-password" required>
+          <input type="password" id="admin-pass" autocomplete="current-password" placeholder="••••••••" required>
         </div>
         <div id="login-error" class="form-error hidden">Nesprávné heslo.</div>
-        <button type="submit" class="btn btn-primary btn-full">Přihlásit</button>
+        <button type="submit" class="btn btn-primary btn-full">Přihlásit se</button>
       </form>
     </div>
   </div>
@@ -46,7 +52,9 @@
     <!-- Tab: Camps -->
     <section id="tab-camps" class="tab-panel">
       <div class="panel-header">
-        <h2 class="section-title">Seznam kempů</h2>
+        <div class="section-header">
+          <h2 class="section-title">Seznam kempů</h2>
+        </div>
         <button id="new-camp-btn" class="btn btn-primary">+ Nový kemp</button>
       </div>
       <div id="admin-camps-list" class="camps-list"></div>
@@ -55,12 +63,14 @@
     <!-- Tab: Riders -->
     <section id="tab-riders" class="tab-panel hidden">
       <div class="panel-header">
-        <h2 class="section-title">Přihlášení jezdci</h2>
+        <div class="section-header">
+          <h2 class="section-title">Přihlášení jezdci</h2>
+        </div>
         <div class="rider-controls">
           <select id="camp-filter" class="filter-select">
             <option value="">— Všechny kempy —</option>
           </select>
-          <button id="print-btn" class="btn btn-outline">Tisknout sestavu</button>
+          <button id="print-btn" class="btn btn-outline">🖨 Tisknout</button>
         </div>
       </div>
       <div id="riders-count" class="riders-count"></div>
@@ -70,24 +80,30 @@
   </main>
 
   <footer class="site-footer">
-    <p>&copy; Dirty Goats CZ &nbsp;|&nbsp; <a href="../index.html">← Zpět na web</a></p>
+    <div class="footer-inner">
+      <img src="../assets/brand/logo.png" alt="Dirty Goats" class="footer-logo">
+      <p class="footer-text">
+        &copy; Dirty Goats CZ &nbsp;·&nbsp;
+        <a href="../index.html">← Zpět na web</a>
+      </p>
+    </div>
   </footer>
 
   <!-- Camp form modal -->
   <div id="camp-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="camp-modal-title">
     <div class="modal-box modal-box--wide">
-      <button class="modal-close" id="camp-modal-close">&times;</button>
+      <button class="modal-close" id="camp-modal-close" aria-label="Zavřít">&times;</button>
       <h2 id="camp-modal-title" class="modal-heading">Nový kemp</h2>
       <form id="camp-form" novalidate>
         <input type="hidden" id="camp-id">
         <div class="form-row">
           <div class="form-group">
             <label for="camp-name">Název kempu <span class="req">*</span></label>
-            <input type="text" id="camp-name" required>
+            <input type="text" id="camp-name" placeholder="Letní BMX Kemp Praha" required>
           </div>
           <div class="form-group">
             <label for="camp-place">Místo konání <span class="req">*</span></label>
-            <input type="text" id="camp-place" required>
+            <input type="text" id="camp-place" placeholder="Praha – Velopark Letňany" required>
           </div>
         </div>
         <div class="form-row">
@@ -114,7 +130,7 @@
         </div>
         <div class="form-group">
           <label for="camp-desc">Popis (volitelné)</label>
-          <textarea id="camp-desc" rows="3"></textarea>
+          <textarea id="camp-desc" rows="3" placeholder="Popis kempu, program, informace pro rodiče…"></textarea>
         </div>
         <div id="camp-form-error" class="form-error hidden"></div>
         <div class="form-actions">
@@ -128,8 +144,8 @@
   <!-- Confirm delete modal -->
   <div id="confirm-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
     <div class="modal-box">
-      <h2 class="modal-heading" style="color:var(--red)">Smazat kemp?</h2>
-      <p id="confirm-text" style="color:var(--text-muted);margin-bottom:1.5rem;font-size:0.9rem"></p>
+      <h2 class="modal-heading" style="color:#ff6b6b">Smazat kemp?</h2>
+      <p id="confirm-text" style="color:var(--text-muted);margin-bottom:1.5rem;font-size:0.9rem;margin-top:0.5rem"></p>
       <div class="form-actions">
         <button id="confirm-cancel" class="btn btn-outline">Zrušit</button>
         <button id="confirm-ok" class="btn" style="background:var(--red);color:#fff">Smazat</button>
