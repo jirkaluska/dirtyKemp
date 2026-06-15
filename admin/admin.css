@@ -56,8 +56,8 @@
 }
 .auth-title {
   font-family: var(--font-cond);
-  font-size: 1.1rem;
-  font-weight: 900;
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -77,8 +77,8 @@
   border: none;
   color: var(--text-muted);
   font-family: var(--font-cond);
-  font-size: 0.95rem;
-  font-weight: 800;
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
   padding: 0.65rem 1.5rem;
   border-bottom: 3px solid transparent;
