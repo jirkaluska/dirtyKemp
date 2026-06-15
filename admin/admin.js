@@ -20,10 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
     populateCampFilter();
   }
 
+  if (sessionStorage.getItem('dg_admin_ok') === '1') showAdmin();
+
   loginForm.addEventListener('submit', e => {
     e.preventDefault();
     const pass = document.getElementById('admin-pass').value;
     if (pass === getStoredPass()) {
+      sessionStorage.setItem('dg_admin_ok', '1');
       loginError.classList.add('hidden');
       showAdmin();
     } else {
