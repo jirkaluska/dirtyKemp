@@ -124,7 +124,7 @@
 .admin-camp-actions { display: flex; gap: 0.5rem; flex-shrink: 0; }
 
 .btn-sm { padding: 0.35rem 0.8rem; font-size: 0.8rem; }
-.btn-danger { background: rgba(210,0,13,0.15); color: #ff6b6b; border: 1px solid rgba(210,0,13,0.3); }
+.btn-danger { background: #fde8e8; color: #b30000; border: 1px solid #f5b0b0; }
 .btn-danger:hover { background: var(--red); color: #fff; border-color: var(--red); }
 .btn-edit { background: var(--bg-card2); color: var(--text-muted); border: 1px solid var(--border2); }
 .btn-edit:hover { border-color: var(--yellow); color: var(--yellow); }
