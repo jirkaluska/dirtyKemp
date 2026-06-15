@@ -12,10 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return localStorage.getItem(ADMIN_PASS_KEY) || DEFAULT_PASS;
   }
 
-  function isLoggedIn() {
-    return sessionStorage.getItem('dg_admin_ok') === '1';
-  }
-
   function showAdmin() {
     loginScreen.classList.add('hidden');
     adminPanel.classList.remove('hidden');
@@ -24,14 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     populateCampFilter();
   }
 
-
-  if (isLoggedIn()) showAdmin();
-
   loginForm.addEventListener('submit', e => {
     e.preventDefault();
     const pass = document.getElementById('admin-pass').value;
     if (pass === getStoredPass()) {
-      sessionStorage.setItem('dg_admin_ok', '1');
       loginError.classList.add('hidden');
       showAdmin();
     } else {
