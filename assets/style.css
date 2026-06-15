@@ -162,7 +162,7 @@ a:hover { text-decoration: underline; }
   font-family: var(--font-cond);
   font-size: 1rem;
   font-weight: 600;
-  color: var(--yellow);
+  color: #111;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   flex: 1;
