@@ -72,47 +72,21 @@ a:hover { text-decoration: underline; }
 
 /* ===== Hero ===== */
 .hero {
-  background: var(--yellow);
-  border-bottom: 3px solid rgba(0,0,0,0.12);
-  padding: 2.5rem 1.5rem 2rem;
-  position: relative;
-  overflow: hidden;
-}
-/* diagonal stripe texture */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    -55deg,
-    transparent,
-    transparent 36px,
-    rgba(0,0,0,0.04) 36px,
-    rgba(0,0,0,0.04) 37px
-  );
-  pointer-events: none;
+  background: #fff;
+  border-bottom: 2px solid var(--border);
 }
 .hero-inner {
   max-width: 1040px;
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
+  padding: 2.5rem 1.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
 }
 .hero-text { flex: 1; }
-/* goat watermark — mix-blend-mode:multiply makes white pixels vanish on yellow bg */
 .hero-mascot-img {
-  width: 180px;
-  height: 180px;
-  flex-shrink: 0;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-  opacity: 0.25;
-  pointer-events: none;
-  user-select: none;
+  display: none;
 }
 .hero-eyebrow {
   font-family: var(--font-cond);
