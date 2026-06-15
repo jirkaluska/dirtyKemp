@@ -5,7 +5,6 @@ const DEFAULT_PASS = 'dirtygoats2024';
 document.addEventListener('DOMContentLoaded', () => {
   const loginScreen = document.getElementById('login-screen');
   const adminPanel  = document.getElementById('admin-panel');
-  const logoutBtn   = document.getElementById('logout-btn');
   const loginForm   = document.getElementById('login-form');
   const loginError  = document.getElementById('login-error');
 
@@ -20,18 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function showAdmin() {
     loginScreen.classList.add('hidden');
     adminPanel.classList.remove('hidden');
-    logoutBtn.classList.remove('hidden');
     renderAdminCamps();
     renderAdminRiders();
     populateCampFilter();
   }
 
-  function showLogin() {
-    sessionStorage.removeItem('dg_admin_ok');
-    loginScreen.classList.remove('hidden');
-    adminPanel.classList.add('hidden');
-    logoutBtn.classList.add('hidden');
-  }
 
   if (isLoggedIn()) showAdmin();
 
@@ -47,8 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('admin-pass').focus();
     }
   });
-
-  logoutBtn.addEventListener('click', showLogin);
 
   // ===== Tabs =====
   document.querySelectorAll('.tab-btn').forEach(btn => {
