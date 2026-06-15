@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dirty Goats – BMX Kempy</title>
+  <link rel="icon" href="assets/logo.png">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="assets/logo.png" alt="Dirty Goats" class="logo">
+      </a>
+      <h1 class="site-title">BMX Kempy</h1>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="camps-section">
+      <h2 class="section-title">Nadcházející kempy</h2>
+      <div id="camps-list" class="camps-list">
+        <div class="loading">Načítám kempy…</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; Dirty Goats CZ &nbsp;|&nbsp; <a href="admin/index.html">Administrace</a></p>
+  </footer>
+
+  <!-- Registration modal -->
+  <div id="reg-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close-btn" aria-label="Zavřít">&times;</button>
+      <h2 id="modal-title" class="modal-heading">Přihlášení na kemp</h2>
+      <p id="modal-camp-name" class="modal-subheading"></p>
+      <form id="reg-form" novalidate>
+        <div class="form-group">
+          <label for="rider-name">Jméno a příjmení jezdce <span class="req">*</span></label>
+          <input type="text" id="rider-name" name="riderName" autocomplete="name" required>
+        </div>
+        <div class="form-group">
+          <label for="contact-name">Kontaktní osoba <span class="req">*</span></label>
+          <input type="text" id="contact-name" name="contactName" autocomplete="off" required>
+        </div>
+        <div class="form-group">
+          <label for="contact-phone">Telefon kontaktní osoby <span class="req">*</span></label>
+          <input type="tel" id="contact-phone" name="contactPhone" autocomplete="tel" required>
+        </div>
+        <div id="form-error" class="form-error hidden"></div>
+        <button type="submit" class="btn btn-primary btn-full">Přihlásit se</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Success modal -->
+  <div id="success-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal-box modal-box--success">
+      <div class="success-icon">✓</div>
+      <h2>Přihláška odeslána!</h2>
+      <p id="success-message"></p>
+      <button class="btn btn-primary" id="success-close-btn">Zavřít</button>
+    </div>
+  </div>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrace – Dirty Goats BMX Kempy</title>
+  <link rel="icon" href="../assets/logo.png">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo-link">
+        <img src="../assets/logo.png" alt="Dirty Goats" class="logo">
+      </a>
+      <h1 class="site-title">Administrace</h1>
+      <button id="logout-btn" class="btn btn-outline admin-logout hidden">Odhlásit</button>
+    </div>
+  </header>
+
+  <!-- Login screen -->
+  <div id="login-screen" class="auth-screen">
+    <div class="auth-box">
+      <h2 class="auth-title">Přihlášení do administrace</h2>
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label for="admin-pass">Heslo <span class="req">*</span></label>
+          <input type="password" id="admin-pass" autocomplete="current-password" required>
+        </div>
+        <div id="login-error" class="form-error hidden">Nesprávné heslo.</div>
+        <button type="submit" class="btn btn-primary btn-full">Přihlásit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin panel -->
+  <main id="admin-panel" class="main-content hidden">
+
+    <div class="admin-tabs">
+      <button class="tab-btn active" data-tab="camps">Kempy</button>
+      <button class="tab-btn" data-tab="riders">Jezdci</button>
+    </div>
+
+    <!-- Tab: Camps -->
+    <section id="tab-camps" class="tab-panel">
+      <div class="panel-header">
+        <h2 class="section-title">Seznam kempů</h2>
+        <button id="new-camp-btn" class="btn btn-primary">+ Nový kemp</button>
+      </div>
+      <div id="admin-camps-list" class="camps-list"></div>
+    </section>
+
+    <!-- Tab: Riders -->
+    <section id="tab-riders" class="tab-panel hidden">
+      <div class="panel-header">
+        <h2 class="section-title">Přihlášení jezdci</h2>
+        <div class="rider-controls">
+          <select id="camp-filter" class="filter-select">
+            <option value="">— Všechny kempy —</option>
+          </select>
+          <button id="print-btn" class="btn btn-outline">Tisknout sestavu</button>
+        </div>
+      </div>
+      <div id="riders-count" class="riders-count"></div>
+      <div id="admin-riders-list"></div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; Dirty Goats CZ &nbsp;|&nbsp; <a href="../index.html">← Zpět na web</a></p>
+  </footer>
+
+  <!-- Camp form modal -->
+  <div id="camp-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="camp-modal-title">
+    <div class="modal-box modal-box--wide">
+      <button class="modal-close" id="camp-modal-close">&times;</button>
+      <h2 id="camp-modal-title" class="modal-heading">Nový kemp</h2>
+      <form id="camp-form" novalidate>
+        <input type="hidden" id="camp-id">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="camp-name">Název kempu <span class="req">*</span></label>
+            <input type="text" id="camp-name" required>
+          </div>
+          <div class="form-group">
+            <label for="camp-place">Místo konání <span class="req">*</span></label>
+            <input type="text" id="camp-place" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="camp-from">Datum od <span class="req">*</span></label>
+            <input type="date" id="camp-from" required>
+          </div>
+          <div class="form-group">
+            <label for="camp-to">Datum do <span class="req">*</span></label>
+            <input type="date" id="camp-to" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="camp-capacity">Kapacita (0 = neomezená)</label>
+            <input type="number" id="camp-capacity" min="0" value="0">
+          </div>
+          <div class="form-group form-group--checkbox">
+            <label class="checkbox-label">
+              <input type="checkbox" id="camp-closed">
+              Ručně uzavřít přihlášky
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="camp-desc">Popis (volitelné)</label>
+          <textarea id="camp-desc" rows="3"></textarea>
+        </div>
+        <div id="camp-form-error" class="form-error hidden"></div>
+        <div class="form-actions">
+          <button type="button" id="camp-cancel-btn" class="btn btn-outline">Zrušit</button>
+          <button type="submit" class="btn btn-primary">Uložit kemp</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Confirm delete modal -->
+  <div id="confirm-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <h2 class="modal-heading" style="color:var(--red)">Smazat kemp?</h2>
+      <p id="confirm-text" style="color:var(--text-muted);margin-bottom:1.5rem;font-size:0.9rem"></p>
+      <div class="form-actions">
+        <button id="confirm-cancel" class="btn btn-outline">Zrušit</button>
+        <button id="confirm-ok" class="btn" style="background:var(--red);color:#fff">Smazat</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/data.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
