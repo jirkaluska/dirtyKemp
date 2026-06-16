@@ -106,7 +106,7 @@ a:hover { text-decoration: underline; }
   object-fit: contain;
   object-position: right center;
   mix-blend-mode: multiply;
-  opacity: 0.12;
+  opacity: 0.22;
   pointer-events: none;
   user-select: none;
 }
