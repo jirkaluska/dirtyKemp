@@ -99,6 +99,8 @@ a:hover { text-decoration: underline; }
   margin-bottom: 0.75rem;
 }
 .hero-mascot-img {
+  /* height = 2 lines of hero-title (2 × font-size × line-height) */
+  height: calc(clamp(3rem, 8vw, 5.5rem) * 2);
   width: auto;
   flex-shrink: 0;
   object-fit: contain;
@@ -107,11 +109,10 @@ a:hover { text-decoration: underline; }
   opacity: 0.12;
   pointer-events: none;
   user-select: none;
-  align-self: stretch;
 }
 .hero-title {
   font-family: var(--font-cond);
-  font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+  font-size: clamp(3rem, 8vw, 5.5rem);
   font-weight: 700;
   line-height: 1;
   text-transform: uppercase;
