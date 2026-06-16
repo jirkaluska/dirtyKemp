@@ -94,17 +94,20 @@ a:hover { text-decoration: underline; }
 .hero-main {
   display: flex;
   align-items: stretch;
-  gap: 1.5rem;
+  justify-content: space-between;
+  gap: 1rem;
   margin-bottom: 0.75rem;
 }
 .hero-mascot-img {
   width: auto;
   flex-shrink: 0;
   object-fit: contain;
+  object-position: right center;
   mix-blend-mode: multiply;
   opacity: 0.12;
   pointer-events: none;
   user-select: none;
+  align-self: stretch;
 }
 .hero-title {
   font-family: var(--font-cond);
@@ -114,14 +117,13 @@ a:hover { text-decoration: underline; }
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: #111;
-  margin-bottom: 0.9rem;
+  margin-bottom: 0;
 }
 .hero-title span { color: var(--yellow-dk); }
 .hero-desc {
   font-size: 0.95rem;
   color: rgba(0,0,0,0.6);
   line-height: 1.6;
-  max-width: 500px;
 }
 
 /* ===== Main ===== */
@@ -463,7 +465,6 @@ a:hover { text-decoration: underline; }
 
 /* ===== Responsive ===== */
 @media (max-width: 680px) {
-  .hero-mascot-img { display: none; }
   .hero-main { margin-bottom: 0.5rem; }
   .camp-number { display: none; }
   .camp-card {
